@@ -1,15 +1,13 @@
-import React from 'react'
+import React from "react";
 
-
-const Part = ({name, exercises}) => {
+const Part = ({ name, exercises }) => {
   return (
     <div>
       <p>
-        {name},  Number of exercises:  {exercises}
+        {name}, Number of exercises: {exercises}
       </p>
-      
     </div>
   );
-}
+};
 
-export default Part
+export default Part;
