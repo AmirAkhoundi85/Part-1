@@ -3,6 +3,7 @@ import "./App.css";
 import Total from "./components/Total";
 import Content from "./components/Content";
 import { useState } from "react";
+import Feedback from "./components/Feedback";
 
 
 function App() {
@@ -37,14 +38,7 @@ function App() {
       <Content parts={parts} />
       <Total parts={parts} />
     <hr />
-    
-      <p>Give feedback</p>
-      <button onClick={()=>{setGood(good+1)}}>Good</button>
-      <button onClick={()=>{setNatural(natural + 1)}}>neutral</button>
-      <button onClick={()=>{setBad(bad + 1)}}>bad</button>
-      <h2>good{good}</h2>
-      <h2>natural{natural}</h2>
-      <h2>bad{bad}</h2>
+    <Feedback />
       </div>
     
   );
