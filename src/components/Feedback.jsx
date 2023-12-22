@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+//Note: I already created another component for feedback
+// and wrote codes here to show more clear
 const Feedback = () => {
   const [good, setGood] = useState(0);
   const [natural, setNatural] = useState(0);
@@ -12,7 +14,7 @@ const Feedback = () => {
     setTotalScore(totalScore + score);
   };
   const calculatePositivePercentage = () => {
-    return totalFeedback === 0 ? 0 : (good / totalFeedback) * 100;
+    return totalFeedback ? (good / totalFeedback) * 100 : 0;
   };
 
   return (
@@ -42,11 +44,14 @@ const Feedback = () => {
       >
         Bad
       </button>
+      <h2>Statistics</h2>
+
       <h2>Good: {good}</h2>
       <h2>Neutral: {natural}</h2>
       <h2>Bad: {bad}</h2>
-      <h2>all : {good + natural + bad}</h2>
-      <h2>Average: {totalFeedback === 0 ? 0 : totalScore / totalFeedback}</h2>
+      <h2>all : {totalFeedback}</h2>
+
+      <h2>Average: {totalFeedback ?  totalScore / totalFeedback: 0}</h2>
       <h2>Positive: {calculatePositivePercentage()}%</h2>
     </div>
   );
