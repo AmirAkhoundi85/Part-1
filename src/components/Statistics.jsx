@@ -15,14 +15,16 @@ const Statistics = ({
       <h1>Statistics</h1>
 
       {totalFeedback ? (
-        <div>
-          <StatisticLine text="Good" value={good} />
-          <StatisticLine text="Natural" value={natural} />
-          <StatisticLine text="Bad" value={bad} />
-          <StatisticLine text="All" value={totalFeedback} />
-          <StatisticLine text="Average" value={average} />
-          <StatisticLine text="Positive" value={positivePercentage} />
-        </div>
+        <table>
+          <tbody>
+            <StatisticLine text="Good" value={good} />
+            <StatisticLine text="Natural" value={natural} />
+            <StatisticLine text="Bad" value={bad} />
+            <StatisticLine text="All" value={totalFeedback} />
+            <StatisticLine text="Average" value={average} />
+            <StatisticLine text="Positive" value={positivePercentage} />
+          </tbody>
+        </table>
       ) : (
         <p>Not feedback given</p>
       )}

@@ -4,13 +4,15 @@ const StatisticLine = ({text, value}) => {
   return (
     <>
       {text == "Positive" ? (
-        <h2>
-          {text}: {value} %
-        </h2>
+        <tr>
+          <td>{text}:</td>
+          <td>{value} %</td>
+        </tr>
       ) : (
-        <h2>
-          {text}: {value}
-        </h2>
+        <tr>
+          <td>{text}:</td>
+          <td>{value} </td>
+        </tr>
       )}
     </>
   );

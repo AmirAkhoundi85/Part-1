@@ -39,11 +39,13 @@ function App() {
   };
 
   const calculatePositivePercentage = () => {
-    return  totalFeedback ? (good / totalFeedback) * 100 : 0;
+    const result = (good / totalFeedback) * 100;
+    return Math.round(result * 100) / 100;
   };
 
   const calculateAvrage = () => {
-     return (totalScore / totalFeedback);
+    const result = totalScore / totalFeedback;
+    return Math.round(result * 100) / 100;
   };
 
   return (
