@@ -1,4 +1,4 @@
-import { useState } from "react";
+import StatisticLine from "./StatisticLine";
 
 //Note: I already created another component for feedback
 // and wrote codes here to show more clear
@@ -16,13 +16,12 @@ const Statistics = ({
 
       {totalFeedback ? (
         <div>
-          <h2>Good: {good}</h2>
-          <h2>Neutral: {natural}</h2>
-          <h2>Bad: {bad}</h2>
-          <h2>all : {totalFeedback}</h2>
-
-          <h2>Average: {average}</h2>
-          <h2>Positive: {positivePercentage}%</h2>
+          <StatisticLine text="Good" value={good} />
+          <StatisticLine text="Natural" value={natural} />
+          <StatisticLine text="Bad" value={bad} />
+          <StatisticLine text="All" value={totalFeedback} />
+          <StatisticLine text="Average" value={average} />
+          <StatisticLine text="Positive" value={positivePercentage} />
         </div>
       ) : (
         <p>Not feedback given</p>
