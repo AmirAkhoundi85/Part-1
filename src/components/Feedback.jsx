@@ -46,13 +46,21 @@ const Feedback = () => {
       </button>
       <h2>Statistics</h2>
 
-      <h2>Good: {good}</h2>
-      <h2>Neutral: {natural}</h2>
-      <h2>Bad: {bad}</h2>
-      <h2>all : {totalFeedback}</h2>
+      {totalFeedback ? (
+        <div>
+          <h2>Good: {good}</h2>
+          <h2>Neutral: {natural}</h2>
+          <h2>Bad: {bad}</h2>
+          <h2>all : {totalFeedback}</h2>
 
-      <h2>Average: {totalFeedback ?  totalScore / totalFeedback: 0}</h2>
-      <h2>Positive: {calculatePositivePercentage()}%</h2>
+          <h2>Average: {totalFeedback ? totalScore / totalFeedback : 0}</h2>
+          <h2>Positive: {calculatePositivePercentage()}%</h2>
+        </div>
+      ) : (
+        <p>Not feedback given</p>
+      )}
+
+      
     </div>
   );
 };
