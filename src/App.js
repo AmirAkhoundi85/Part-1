@@ -23,6 +23,7 @@ function App() {
 //  {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0}
   const [votes, setVotes] = useState(points);
   const [randomIndex, setRandomIndex] = useState(0);
+  
 
   const randomHandler = () => {
     const randomNum = Math.floor(Math.random() * anecdotes.length);
@@ -32,14 +33,25 @@ function App() {
   const vote = () => {
    setVotes(  {...votes, [randomIndex]: votes[randomIndex]+1}  )
   };
+  const calculateMaxIndex = ()=>{
+    const values = Object.values(votes); ///[0,1,3,0,0,2,1.0]
+    const maxValue = Math.max(...values);
+    return values.indexOf(maxValue);
+  }
 
   return (
     <div>
       <div>
+        <h1>Anecodet of the day</h1>
         <p>{anecdotes[randomIndex]}</p>
         <p>Has {votes[randomIndex]} votes</p>
         <button onClick={vote}>Vote</button>
         <button onClick={randomHandler}>Next anecdotes</button>
+      </div>
+      <div>
+        <h2>Anecodet with most votes</h2>
+        <p>{anecdotes[calculateMaxIndex()]}</p>
+        <p>Has {votes[calculateMaxIndex()]} votes</p>
       </div>
     </div>
   );
