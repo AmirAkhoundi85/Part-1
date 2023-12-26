@@ -17,99 +17,28 @@ function App() {
     "The only way to go fast, is to go well.",
   ];
 
-  const course = {
-    name: "Half Stack application development",
-    parts: [
-      {
-        name: "Fundamentals of React",
-        exercises: 10,
-      },
-      {
-        name: "Using props to pass data",
-        exercises: 7,
-      },
-      {
-        name: "State of a component",
-        exercises: 14,
-      },
-    ],
-    price: 120,
-  };
-  const { name, parts } = course;
 
-  const [good, setGood] = useState(0);
-  const [natural, setNatural] = useState(0);
-  const [bad, setBad] = useState(0);
-  const [totalFeedback, setTotalFeedback] = useState(0);
-  const [totalScore, setTotalScore] = useState(0);
-  const [currentAnecdote, setCurrentAnecdote]= useState(" ")
+  let points={}
+ anecdotes.forEach((item, index)=> points[index]=0)
+//  {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0}
+  const [votes, setVotes] = useState(points);
+  const [randomIndex, setRandomIndex] = useState(0);
 
-  
-
-  const handleFeedback = (score) => {
-    setTotalFeedback(totalFeedback + 1);
-    setTotalScore(totalScore + score);
+  const randomHandler = () => {
+    const randomNum = Math.floor(Math.random() * anecdotes.length);
+    setRandomIndex(randomNum);
   };
 
-  const calculatePositivePercentage = () => {
-    const result = (good / totalFeedback) * 100;
-    return Math.round(result * 100) / 100;
+  const vote = () => {
+   setVotes(  {...votes, [randomIndex]: votes[randomIndex]+1}  )
   };
-
-  const calculateAvrage = () => {
-    const result = totalScore / totalFeedback;
-    return Math.round(result * 100) / 100;
-  };
-  const randomHandler = ()=>{
-     const randomIndex = Math.floor(Math.random() * anecdotes.length);
-     setCurrentAnecdote(anecdotes[randomIndex]);
-  }
 
   return (
     <div>
-      <Header course={name} />
-      <Content parts={parts} />
-      <Total parts={parts} />
-      <hr />
-
       <div>
-        <p>Give feedback</p>
-        <button
-          onClick={() => {
-            setGood(good + 1);
-            handleFeedback(1);
-          }}
-        >
-          Good
-        </button>
-        <button
-          onClick={() => {
-            setNatural(natural + 1);
-            handleFeedback(0);
-          }}
-        >
-          Neutral
-        </button>
-        <button
-          onClick={() => {
-            setBad(bad + 1);
-            handleFeedback(-1);
-          }}
-        >
-          Bad
-        </button>
-      </div>
-
-      <Statistics
-        good={good}
-        natural={natural}
-        bad={bad}
-        totalFeedback={totalFeedback}
-        positivePercentage={calculatePositivePercentage()}
-        average={calculateAvrage()}
-      />
-      <div>
-        <p>{currentAnecdote}</p>
+        <p>{anecdotes[randomIndex]}</p>
+        <p>Has {votes[randomIndex]} votes</p>
+        <button onClick={vote}>Vote</button>
         <button onClick={randomHandler}>Next anecdotes</button>
       </div>
     </div>
